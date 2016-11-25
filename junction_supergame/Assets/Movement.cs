@@ -34,10 +34,10 @@ public class Movement : MonoBehaviour {
     private void OnTriggerStay2D( Collider2D collision )
     {
         if( collision.gameObject.tag.Contains("Arrow") )
-            if( Vector3.Distance(collision.transform.position, this.transform.position) < 2*m_velocity  )
+            if( Vector3.Distance(collision.transform.position, transform.position) < 3*m_velocity  )
             {
                 setVectorByArrow( collision.gameObject.tag );
-                transform.position = new Vector3( collision.transform.position.x, collision.transform.position.y + m_direction.y*m_velocity, 0.0f );
+                transform.position = new Vector3( collision.transform.position.x + m_direction.x * 2 * m_velocity, collision.transform.position.y + m_direction.y*2*m_velocity, 0.0f );
                 Debug.Log( "Trigger" );
             }
     }

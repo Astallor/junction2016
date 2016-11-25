@@ -13,15 +13,20 @@ public class BodyCollision : MonoBehaviour {
 	    
 	}
 
-    void OnCollisionEnter2D( Collision2D coll )
+    //void OnCollisionEnter2D( Collision2D coll )
+    //{
+        
+    //}
+
+    private void OnTriggerEnter2D( Collider2D collision )
     {
-        if( coll.gameObject.tag == "Wall" )
+        if( collision.gameObject.tag == "Wall" )
         {
             GetComponent<Movement>().m_direction = Quaternion.Euler( 0, 0, -90 ) * GetComponent<Movement>().m_direction;
         }
-        else if( coll.gameObject.tag == "Grave" )
+        else if( collision.gameObject.tag == "Grave" )
         {
             Debug.Log( "You DIEDEDEDEDEDEDED!!!" );
         }
-    } 
+    }
 }

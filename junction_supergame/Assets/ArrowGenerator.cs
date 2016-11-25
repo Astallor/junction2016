@@ -17,7 +17,7 @@ public class ArrowGenerator : MonoBehaviour {
                         new Vector3(transform.position.x, transform.position.y, 0),
                         new Quaternion(0f, 0f, 0f, 0f));
 
-        spawned.transform.Translate(new Vector3(0, -1, 0));
+        spawned.transform.Translate(new Vector3(0, -0.5f, 0));
 
         Displayed = spawned.transform;
     }
@@ -59,7 +59,7 @@ public class ArrowGenerator : MonoBehaviour {
                         new Quaternion(0f, 0f, 0f, 0f));
                 break;
         }
-        spawned.transform.Translate(new Vector3(0, -1, 0));
+        spawned.transform.Translate(new Vector3(0, -0.5f, 0));
         Displayed = spawned.transform;
     }
 }

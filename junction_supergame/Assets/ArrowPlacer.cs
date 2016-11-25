@@ -16,8 +16,18 @@ public class ArrowPlacer : MonoBehaviour {
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Debug.Log(pos);
             pos.x = (float)Math.Round(2.0*pos.x)/2.0f;
             pos.y = (float)Math.Round(2.0 * pos.y) / 2.0f;
+           /*
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics2d.ra)
+            {
+                Debug.Log(hit.transform.gameObject.name);
+            }
+            */
 
             int arrow = GetNextArrow();
             GameObject spawned = new GameObject();
@@ -47,7 +57,7 @@ public class ArrowPlacer : MonoBehaviour {
             }
 
             ArrowGen.GetComponent<ArrowGenerator>().Arrows.Add(spawned.transform);
-            Debug.Log(spawned.transform.position);
+            
 
         }
     }

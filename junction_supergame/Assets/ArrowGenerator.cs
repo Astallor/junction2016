@@ -62,4 +62,13 @@ public class ArrowGenerator : MonoBehaviour {
         spawned.transform.Translate(new Vector3(0, -0.5f, 0));
         Displayed = spawned.transform;
     }
+
+	public void destroyArrows()
+	{
+		for( int i = Arrows.Count - 1; i >= 0; i-- )
+		{
+			Destroy( ((Transform) Arrows[i]).gameObject );
+			Arrows.Remove( Arrows[i] );
+		}	
+	}
 }

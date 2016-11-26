@@ -82,6 +82,12 @@ public class GenerateBoundaryWall : MonoBehaviour {
 	public void generateSoul( int x, int y )
 	{
 		Instantiate( Resources.Load( "Prefabs/Soul" ), new Vector3( (((float) x) / 2f), (((float) y) / 2f), 0 ), Quaternion.identity );
+		Movement.defaultVelocity = 0.05f;
+	}
+
+	public void generateGrave( int x, int y )
+	{
+		Instantiate( Resources.Load( "Prefabs/Grave" ), new Vector3( (((float) x) / 2f), (((float) y) / 2f), 0 ), Quaternion.identity );
 	}
 
 	// Update is called once per frame

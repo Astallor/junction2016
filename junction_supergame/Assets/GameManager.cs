@@ -6,7 +6,10 @@ public class GameManager : MonoBehaviour {
     public bool GameOver = false;
     public bool GameWon = false;
     public bool MenuState = true;
+    public bool HowToPlay = false;
     public Canvas RestartCanvas;
+    public Canvas TutorialCanvas;
+    public Canvas MenuCanvas;
 	// Use this for initialization
 	void Start () {
 	
@@ -54,6 +57,8 @@ public class GameManager : MonoBehaviour {
             }
         }
 
+        
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             Replay();
@@ -77,5 +82,30 @@ public class GameManager : MonoBehaviour {
         GameObject.FindObjectOfType<LevelHandling>().resetLevel();
 
         RestartCanvas.gameObject.SetActive(false);
+    }
+
+    public void Tutorial()
+    {
+        Time.timeScale = 0;
+        TutorialCanvas.gameObject.SetActive(true);
+        if (!gameObject.GetComponent<SpriteRenderer>())
+        {
+            SpriteRenderer spriteR = gameObject.AddComponent<SpriteRenderer>();
+            spriteR.sprite = Resources.Load<Sprite>("Sprites/HowTo");
+            spriteR.sortingLayerName = "GUI";
+        }
+        else
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/HowTo");
+            MenuCanvas.gameObject.SetActive(false);
+        }
+    }
+
+    public void BackToMenu()
+    {
+        MenuState = true;
+        gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/Menu");
+        MenuCanvas.gameObject.SetActive(true);
+        TutorialCanvas.gameObject.SetActive(false);
     }
 }

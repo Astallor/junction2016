@@ -20,13 +20,15 @@ public class GenerateFirstLevel : MonoBehaviour {
 	{
 		nextLevel = 0;
 		listOfLevels = new List<Action>();
+        
 		listOfLevels.Add( () => this.createFirst() );
 		listOfLevels.Add( () => this.createSecond() );
 		listOfLevels.Add( () => this.createThird() );
 		listOfLevels.Add( () => this.createFourth() );
 		listOfLevels.Add( () => this.createFifth() );
 		listOfLevels.Add( () => this.createSixth() );
-	}
+        listOfLevels.Add(() => this.K1());
+    }
 
 	public bool createNextLevel()
 	{
@@ -155,6 +157,50 @@ public class GenerateFirstLevel : MonoBehaviour {
 		boundaryGenerator.generateBody( 1, 7 );
 		boundaryGenerator.generateSoul( 1, 1 );
 	}
+
+
+    private void K1 ()
+    {
+        //initiate
+        boundaryGenerator = GetComponent<GenerateBoundaryWall>();
+        boundaryGenerator.xBoundary = 20;
+        boundaryGenerator.yBoundary = 15;
+
+
+        boundaryGenerator.generate();
+        //do the left most tomb
+        boundaryGenerator.generateWall(2, 12, 2, 2);
+        boundaryGenerator.generateWall(4, 10, 5, 5);
+        boundaryGenerator.generateWall(9, 9, 6, 12);
+        boundaryGenerator.generateWall(10, 13, 14, 14);
+
+        boundaryGenerator.generateGrave(5, 13);
+        boundaryGenerator.generateGrave(6, 13);
+        boundaryGenerator.generateGrave(7, 13);
+        boundaryGenerator.generateGrave(8, 13);
+        boundaryGenerator.generateGrave(9, 13);
+        boundaryGenerator.generateGrave(10, 13);
+        boundaryGenerator.generateGrave(11, 13);
+
+
+        boundaryGenerator.generateGrave(13, 15);
+
+        boundaryGenerator.generateGrave(5, 1);
+        boundaryGenerator.generateGrave(6, 1);
+        boundaryGenerator.generateGrave(7, 1);
+        boundaryGenerator.generateGrave(8, 1);
+        boundaryGenerator.generateGrave(9, 1);
+        boundaryGenerator.generateGrave(10, 1);
+        boundaryGenerator.generateGrave(11, 1);
+
+
+        boundaryGenerator.generateGrave(17, 5);
+        boundaryGenerator.generateGrave(15, 3);
+        boundaryGenerator.generateGrave(13, 10);
+
+        boundaryGenerator.generateBody(1, 7);
+        boundaryGenerator.generateSoul(1, 1);
+    }
 
 	private void createFourth()
 	{

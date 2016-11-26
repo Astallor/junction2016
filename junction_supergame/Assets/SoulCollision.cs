@@ -14,6 +14,7 @@ public class SoulCollision : MonoBehaviour {
         float yWall = lvlH.GetComponent<GenerateBoundaryWall>().xBoundary; 
         xBound = new Vector2(-tolerance, tolerance + xWall/2.0f);
         yBound = new Vector2(-tolerance, tolerance + yWall/2.0f);
+        GetComponent<Animator>().SetInteger( "Wall", 0 );
     }
 	
 	// Update is called once per frame
@@ -33,6 +34,7 @@ public class SoulCollision : MonoBehaviour {
         {
             //GetComponent<Movement>().m_vector.Scale( new Vector3( 0.25f, 0.25f ) );
             GetComponent<Movement>().m_velocity = Movement.defaultVelocity/4;
+            GetComponent<Animator>().SetInteger( "Wall", 1 );
         }
         Debug.Log( "Collision Soul" );
     }
@@ -43,6 +45,7 @@ public class SoulCollision : MonoBehaviour {
         {
             //GetComponent<Movement>().m_vector.Scale( new Vector3( 4f, 4f ) );
             GetComponent<Movement>().m_velocity = Movement.defaultVelocity;
+            GetComponent<Animator>().SetInteger( "Wall", 0 );
         }
     }
 }

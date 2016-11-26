@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour {
     public bool GameOver = false;
     public bool GameWon = false;
     public bool MenuState = true;
-
+    public Canvas RestartCanvas;
 	// Use this for initialization
 	void Start () {
 	
@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour {
         {
             Time.timeScale = 0;
 
+            RestartCanvas.gameObject.SetActive(true);
+
             if (!gameObject.GetComponent<SpriteRenderer>())
             {
                 SpriteRenderer spriteR = gameObject.AddComponent<SpriteRenderer>();
@@ -30,6 +32,8 @@ public class GameManager : MonoBehaviour {
         if (GameWon)
         {
             Time.timeScale = 0;
+
+            RestartCanvas.gameObject.SetActive(true);
 
             if (!gameObject.GetComponent<SpriteRenderer>())
             {
@@ -52,16 +56,19 @@ public class GameManager : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            Time.timeScale = 1;
-
-            GameOver = GameWon = MenuState = false;
-            Destroy(gameObject.GetComponent<SpriteRenderer>());
-			GameObject.FindObjectOfType<LevelHandling>().resetLevel();
+            Replay();
             //Application.LoadLevel(0);
         }
 	}
 
     public void StartGame()
+    {
+        Replay();
+
+        Destroy(GameObject.FindGameObjectWithTag("MenuCanvas"));
+    }
+
+    public void Replay()
     {
         Time.timeScale = 1;
 
@@ -69,6 +76,6 @@ public class GameManager : MonoBehaviour {
         Destroy(gameObject.GetComponent<SpriteRenderer>());
         GameObject.FindObjectOfType<LevelHandling>().nextLevel();
 
-        Destroy(GameObject.FindGameObjectWithTag("MenuCanvas"));
+        RestartCanvas.gameObject.SetActive(false);
     }
 }

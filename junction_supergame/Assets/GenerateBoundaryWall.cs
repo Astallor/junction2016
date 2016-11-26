@@ -89,7 +89,7 @@ public class GenerateBoundaryWall : MonoBehaviour {
 
 	public void generateGrave( int x, int y )
 	{
-		Instantiate( Resources.Load( "Prefabs/Grave" ), new Vector3( (((float) x) / 2f), (((float) y) / 2f), 0 ), Quaternion.identity );
+		Instantiate( Resources.Load( "Prefabs/Grave" ), new Vector3( (((float) x) / 2f), (((float) y) / 2f - 0.25f), 0 ), Quaternion.identity );
 	}
 
 	public void generateTombstone( int x, int y )

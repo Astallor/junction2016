@@ -45,9 +45,5 @@ public class BodyCollision : MonoBehaviour {
         {
             GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().GameWon = true;
         }
-        else if( collision.tag == "Character" )
-        {
-            Debug.Log( "You WIN!!!" );
-        }
     }
 }

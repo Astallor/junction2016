@@ -9,25 +9,18 @@ public class GenerateBoundaryWall : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		for( int x = 0; x < xBoundary; x++ )
-		{
-			if( x == 0 || x == (xBoundary - 1) )
-				for( int y = 0; y < yBoundary; y++ )
-				{
-					Instantiate( wall, new Vector3( ((float)x/2), ((float) y / 2), 0 ), Quaternion.identity );
-				}
-			else
-			{
-				Instantiate( wall, new Vector3( ((float) x / 2), 0, 0 ), Quaternion.identity );
-				Instantiate( wall, new Vector3( ((float) x / 2), ((float)(yBoundary - 1))/2f, 0 ), Quaternion.identity );
-			}
-				
-		}
-	}
+        
+    }
 
 	public void generate()
 	{
-		for( int x = 0; x < xBoundary; x++ )
+        for( int x = -3; x <= xBoundary + 3; x++ )
+        {
+            for( int y = -3; y <= yBoundary + 3; y++ )
+                Instantiate( Resources.Load( "Prefabs/Tile" ), new Vector3( (((float) x) / 2f), (((float) y) / 2f), 0 ), Quaternion.identity );
+        }
+
+        for( int x = 0; x < xBoundary; x++ )
 		{
 			if( x == 0 || x == (xBoundary - 1) )
 				for( int y = 0; y < yBoundary; y++ )

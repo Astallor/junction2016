@@ -5,7 +5,7 @@ public class Movement : MonoBehaviour {
 
     public Vector3 m_direction;
     public float m_velocity = 0.05f;
-    public const float defaultVelocity = 0.05f;
+    public static float defaultVelocity = 0.05f;
     public const float Speed = 1.0f;
 
     // Use this for initialization

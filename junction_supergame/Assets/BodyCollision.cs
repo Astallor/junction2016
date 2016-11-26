@@ -33,6 +33,11 @@ public class BodyCollision : MonoBehaviour {
         else if( collision.gameObject.tag == "Grave" )
         {
             Debug.Log( "You DIEDEDEDEDEDEDED!!!" );
+            //GetComponent<Movement>().m_velocity = 0f;
+            Movement.defaultVelocity = 0f;
+            foreach( GameObject obj in GameObject.FindGameObjectsWithTag( "Character" ) )
+                obj.GetComponent<Movement>().m_velocity = 0f;
+            transform.position = collision.transform.position;
         }
     }
 }

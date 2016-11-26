@@ -25,12 +25,13 @@ public class GenerateFirstLevel : MonoBehaviour {
 		listOfLevels.Add( () => this.createThird() );
 	}
 
-	public void createNextLevel()
+	public bool createNextLevel()
 	{
 		if( listOfLevels.Count <= nextLevel )
-			return; //TODO start end of game
+			return false; //TODO start end of game
 		listOfLevels.ElementAt( nextLevel ).Invoke();
 		nextLevel++;
+		return true;
 	}
 
 	public void recreateCurrentLevel()

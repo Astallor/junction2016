@@ -9,10 +9,10 @@ public class LevelHandling : MonoBehaviour {
 		GetComponent<GenerateFirstLevel>().createNextLevel();
 	}
 
-	public void nextLevel()
+	public bool nextLevel()
 	{
 		GetComponent<DestroyLevel>().destroyLevel();
-		GetComponent<GenerateFirstLevel>().createNextLevel();
+		return GetComponent<GenerateFirstLevel>().createNextLevel();
 	}
 
 	public void resetLevel()

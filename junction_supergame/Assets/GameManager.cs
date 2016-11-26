@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour {
         {
             Time.timeScale = 0;
 
+            RestartCanvas.gameObject.SetActive(true);
+
             if (!gameObject.GetComponent<SpriteRenderer>())
             {
                 SpriteRenderer spriteR = gameObject.AddComponent<SpriteRenderer>();

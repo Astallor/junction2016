@@ -37,9 +37,17 @@ public class GenerateFirstLevel : MonoBehaviour {
 		return true;
 	}
 
-	public void recreateCurrentLevel()
+	public bool recreateCurrentLevel()
 	{
-		listOfLevels.ElementAt( nextLevel-1 ).Invoke();
+		try
+		{
+			listOfLevels.ElementAt( nextLevel - 1 ).Invoke();
+			return true;
+		}
+		catch
+		{
+			return false;
+		}
 	}
 
 	private void init()

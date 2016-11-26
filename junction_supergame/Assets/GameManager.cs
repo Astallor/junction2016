@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour {
 
         GameOver = GameWon = MenuState = false;
         Destroy(gameObject.GetComponent<SpriteRenderer>());
-        GameObject.FindObjectOfType<LevelHandling>().nextLevel();
+        GameObject.FindObjectOfType<LevelHandling>().resetLevel();
 
         RestartCanvas.gameObject.SetActive(false);
     }

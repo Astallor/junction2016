@@ -7,10 +7,12 @@ public class Movement : MonoBehaviour {
     public float m_velocity = 0.05f;
     public static float defaultVelocity = 0.05f;
     public const float Speed = 1.0f;
+    private bool m_arrowInteract;
 
     // Use this for initialization
     void Start () {
         m_direction = new Vector3( 1.0f, 0.0f );
+        m_arrowInteract = true;
     }
 	
 	// Update is called once per frame
@@ -35,12 +37,19 @@ public class Movement : MonoBehaviour {
     private void OnTriggerStay2D( Collider2D collision )
     {
         if( collision.gameObject.tag.Contains("Arrow") )
-            if( Vector3.Distance(collision.transform.position, transform.position) < 3*m_velocity  )
+            if( m_arrowInteract && Vector3.Distance(collision.transform.position, transform.position) < 3*m_velocity  )
             {
+                m_arrowInteract = false;
                 setVectorByArrow( collision.gameObject.tag );
                 transform.position = new Vector3( collision.transform.position.x + m_direction.x * 3 * m_velocity, collision.transform.position.y + m_direction.y * 3 * m_velocity, 0.0f );
                 Debug.Log( "Trigger" );
             }
+    }
+
+    private void OnTriggerExit2D( Collider2D collision )
+    {
+        if( collision.gameObject.tag.Contains( "Arrow" ) )
+            m_arrowInteract = true;
     }
 
     private void setVectorByArrow( string tag )

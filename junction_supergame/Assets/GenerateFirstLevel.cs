@@ -85,7 +85,7 @@ public class GenerateFirstLevel : MonoBehaviour {
 		boundaryGenerator.generateGrave( 12, 11 );
 		boundaryGenerator.generateGrave( 12, 3 );
 
-		boundaryGenerator.generateBody( 1, 7 );
+		boundaryGenerator.generateBody( 1, 6 );
 		boundaryGenerator.generateSoul( 1, 1 );
 	}
 

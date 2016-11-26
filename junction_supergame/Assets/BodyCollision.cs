@@ -39,5 +39,9 @@ public class BodyCollision : MonoBehaviour {
                 obj.GetComponent<Movement>().m_velocity = 0f;
             transform.position = collision.transform.position;
         }
+        else if( collision.tag == "Character" )
+        {
+            Debug.Log( "You WIN!!!" );
+        }
     }
 }

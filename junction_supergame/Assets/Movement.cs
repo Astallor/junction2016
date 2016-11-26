@@ -8,12 +8,14 @@ public class Movement : MonoBehaviour {
     public static float defaultVelocity = 0.05f;
     public const float Speed = 1.0f;
     private bool m_arrowInteract;
+    private Animator m_anim;
 
     // Use this for initialization
     void Start () {
         m_velocity = 0.05f;
         m_direction = new Vector3( 1.0f, 0.0f );
         m_arrowInteract = true;
+        m_anim = GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
@@ -59,15 +61,19 @@ public class Movement : MonoBehaviour {
         {
             case "UpArrow":
                 m_direction.Set( 0.0f, Speed, 0.0f );
+                m_anim.SetInteger( "Direction", 2 );
                 break;
             case "DownArrow":
                 m_direction.Set( 0.0f, -Speed, 0.0f );
+                m_anim.SetInteger( "Direction", -2 );
                 break;
             case "RightArrow":
                 m_direction.Set( Speed, 0.0f, 0.0f );
+                m_anim.SetInteger( "Direction", 1 );
                 break;
             case "LeftArrow":
                 m_direction.Set( -Speed, 0.0f, 0.0f );
+                m_anim.SetInteger( "Direction", -1 );
                 break;
 
 

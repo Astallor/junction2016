@@ -33,6 +33,7 @@ public class SoulCollision : MonoBehaviour {
         {
             //GetComponent<Movement>().m_vector.Scale( new Vector3( 0.25f, 0.25f ) );
             GetComponent<Movement>().m_velocity = Movement.defaultVelocity/4;
+            GetComponent<Animator>().SetInteger( "Wall", 1 );
         }
         Debug.Log( "Collision Soul" );
     }
@@ -43,6 +44,7 @@ public class SoulCollision : MonoBehaviour {
         {
             //GetComponent<Movement>().m_vector.Scale( new Vector3( 4f, 4f ) );
             GetComponent<Movement>().m_velocity = Movement.defaultVelocity;
+            GetComponent<Animator>().SetInteger( "Wall", 0 );
         }
     }
 }

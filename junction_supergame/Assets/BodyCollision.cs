@@ -28,7 +28,7 @@ public class BodyCollision : MonoBehaviour {
             transform.position = new Vector3(tmp_x, tmp_y, 0f);
             GetComponent<Movement>().m_direction = Quaternion.Euler(0, 0, -90) * GetComponent<Movement>().m_direction;
             Debug.Log(GetComponent<Movement>().m_direction.ToString());
-
+			GetComponent<BodySpriteAnimations>().changeSprite( GetComponent<Movement>().m_direction );
         }
         else if (collision.gameObject.tag == "Grave")
         {

@@ -46,6 +46,10 @@ public class Movement : MonoBehaviour {
                 setVectorByArrow( collision.gameObject.tag );
                 transform.position = new Vector3( collision.transform.position.x + m_direction.x * 3 * m_velocity, collision.transform.position.y + m_direction.y * 3 * m_velocity, 0.0f );
                 Debug.Log( "Trigger" );
+				try
+				{
+					GetComponent<BodySpriteAnimations>().changeSprite( m_direction );
+				} catch { }
             }
     }
 

@@ -20,7 +20,6 @@ public class GenerateFirstLevel : MonoBehaviour {
 	{
 		nextLevel = 0;
 		listOfLevels = new List<Action>();
-        
 		listOfLevels.Add( () => this.createFirst() );
 		listOfLevels.Add( () => this.createSecond() );
 		listOfLevels.Add( () => this.createThird() );

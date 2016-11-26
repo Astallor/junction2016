@@ -27,7 +27,7 @@ public class DestroyLevel : MonoBehaviour {
 	private void destroyObjectsWithTag( string tag )
 	{
 		foreach( GameObject obj in GameObject.FindGameObjectsWithTag( tag ) )
-			DestroyImmediate( obj );
+			Destroy( obj );
 	}
 
 

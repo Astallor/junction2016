@@ -4,7 +4,7 @@ using System.Collections;
 public class ArrowGenerator : MonoBehaviour {
     public int ArrowNo;
     public int ArrowLimit = 3;
-    private Transform Displayed;
+    public Transform Displayed;
     private int ArrowCount;
     public ArrayList Arrows = new ArrayList();
 

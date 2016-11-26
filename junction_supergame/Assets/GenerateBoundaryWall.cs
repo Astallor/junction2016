@@ -72,7 +72,19 @@ public class GenerateBoundaryWall : MonoBehaviour {
 		for( int x = xFrom; x <= xTo ; x++ )
 		{
 			for( int y = yFrom; y <= yTo; y++ )
-				Instantiate( wall, new Vector3( (((float) x) / 2f), (((float) y )/ 2f), 0 ), Quaternion.identity );
+			{
+				bool flag = false;
+				foreach( GameObject ob in GameObject.FindGameObjectsWithTag( "Wall" ) )
+				{
+					if( Vector3.Distance( new Vector3( (((float) x) / 2f), (((float) y) / 2f), 0 ), ob.transform.position ) == 0 )
+					{						
+						flag = true;
+					}
+				}
+				if( !flag )
+					Instantiate( wall, new Vector3( (((float) x) / 2f), (((float) y )/ 2f), 0 ), Quaternion.identity );
+			}
+				
 		}
 	}
 

@@ -188,20 +188,12 @@ public class GenerateFirstLevel : MonoBehaviour {
 
 		boundaryGenerator.generate();
 
-		for(int i = 1; i <= 17; i++ )
-		{
-			boundaryGenerator.generateGrave( i, 18 );
-			boundaryGenerator.generateGrave( i, 1 );
-		}
-		
-		for(int i = 2; i <= 17; i++ )
-		{
-			boundaryGenerator.generateGrave( 1, i );
-		}
+		boundaryGenerator.generateGrave( 17, 18 );
+		boundaryGenerator.generateGrave( 17, 2 );
 
-		boundaryGenerator.generateWall( 17, 17, 2, 17 );
-		boundaryGenerator.generateWall( 2, 2, 2, 17 );
-		boundaryGenerator.generateWall( 3, 16, 2, 2 );
+		boundaryGenerator.generateWall( 18, 16, 1, 17 );
+		boundaryGenerator.generateWall( 1, 3, 1, 17 );
+		boundaryGenerator.generateWall( 3, 16, 1, 2 );
 
 		boundaryGenerator.generateWall( 14, 13, 6, 7 );
 		boundaryGenerator.generateWall( 5, 6, 6, 7 );

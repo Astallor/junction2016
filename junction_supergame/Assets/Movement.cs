@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        m_velocity = 0.05f;
         m_direction = new Vector3( 1.0f, 0.0f );
     }
 	

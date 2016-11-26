@@ -34,6 +34,15 @@ public class GenerateBoundaryWall : MonoBehaviour {
 			}
 
 		}
+		GameObject.FindObjectOfType<Camera>().transform.position = new Vector3( xBoundary/4f, yBoundary/4f, -1f );
+		if( xBoundary > 35 ) GameObject.FindObjectOfType<Camera>().orthographicSize = 7f;
+		else GameObject.FindObjectOfType<Camera>().orthographicSize = 6f;
+		GameObject.FindGameObjectWithTag( "NextSign" ).transform.position = new Vector3( xBoundary/2f + 1.5f, yBoundary/2f - 1f, 0 );
+		//GameObject.FindObjectOfType<ArrowGenerator>().transform.position = new Vector3( xBoundary / 2f + 4, yBoundary / 2f - 1, 0 );
+		GameObject.FindObjectOfType<ArrowGenerator>().Displayed.transform.position = new Vector3( xBoundary / 2f + 1.5f, yBoundary / 2f - 1.5f, 0 );
+
+		GameObject.FindGameObjectWithTag( "Background" ).transform.position = new Vector3( xBoundary / 4f, yBoundary / 4f, 0 );
+		GameObject.FindGameObjectWithTag("Background").transform.localScale = new Vector3( xBoundary * 10, yBoundary * 10, 0 );
 	}
 
 	public void generateWall(int fromY, int toY, int fromX, int toX )
@@ -81,6 +90,11 @@ public class GenerateBoundaryWall : MonoBehaviour {
 	public void generateGrave( int x, int y )
 	{
 		Instantiate( Resources.Load( "Prefabs/Grave" ), new Vector3( (((float) x) / 2f), (((float) y) / 2f), 0 ), Quaternion.identity );
+	}
+
+	public void generateTombstone( int x, int y )
+	{
+		Instantiate( Resources.Load( "Prefabs/Tombstone" ), new Vector3( (((float) x) / 2f), (((float) y) / 2f), 0 ), Quaternion.identity );
 	}
 
 	// Update is called once per frame

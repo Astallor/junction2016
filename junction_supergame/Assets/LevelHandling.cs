@@ -6,7 +6,7 @@ public class LevelHandling : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		GetComponent<GenerateFirstLevel>().initialize();
-		GetComponent<GenerateFirstLevel>().createNextLevel();
+		//GetComponent<GenerateFirstLevel>().createNextLevel();
 	}
 
 	public bool nextLevel()

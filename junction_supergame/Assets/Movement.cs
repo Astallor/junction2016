@@ -16,7 +16,8 @@ public class Movement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         userInput();
-		transform.Translate( m_direction * m_velocity );
+        //transform.Translate( m_direction * m_velocity );
+        GetComponent<Rigidbody2D>().velocity = m_direction * m_velocity * 30;
 	}
 
 	void userInput()
@@ -37,7 +38,7 @@ public class Movement : MonoBehaviour {
             if( Vector3.Distance(collision.transform.position, transform.position) < 3*m_velocity  )
             {
                 setVectorByArrow( collision.gameObject.tag );
-                transform.position = new Vector3( collision.transform.position.x + m_direction.x * 2 * m_velocity, collision.transform.position.y + m_direction.y*2*m_velocity, 0.0f );
+                transform.position = new Vector3( collision.transform.position.x + m_direction.x * 3 * m_velocity, collision.transform.position.y + m_direction.y * 3 * m_velocity, 0.0f );
                 Debug.Log( "Trigger" );
             }
     }

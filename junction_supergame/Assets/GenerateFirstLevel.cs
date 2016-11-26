@@ -33,6 +33,11 @@ public class GenerateFirstLevel : MonoBehaviour {
 		nextLevel++;
 	}
 
+	public void recreateCurrentLevel()
+	{
+		listOfLevels.ElementAt( nextLevel-1 ).Invoke();
+	}
+
 	private void createFirst()
 	{
 		//initiate

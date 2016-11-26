@@ -15,7 +15,13 @@ public class LevelHandling : MonoBehaviour {
 		GetComponent<GenerateFirstLevel>().createNextLevel();
 	}
 
-	
+	public void resetLevel()
+	{
+		GetComponent<DestroyLevel>().destroyLevel();
+		GetComponent<GenerateFirstLevel>().recreateCurrentLevel();
+	}
+
+
 	// Update is called once per frame
 	void Update () {
 	

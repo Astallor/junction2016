@@ -38,7 +38,8 @@ public class GameManager : MonoBehaviour {
         {
             GameOver = GameWon = false;
             Destroy(gameObject.GetComponent<SpriteRenderer>());
-            Application.LoadLevel(0);
+			GameObject.FindObjectOfType<LevelHandling>().resetLevel();
+            //Application.LoadLevel(0);
         }
 	}
 }

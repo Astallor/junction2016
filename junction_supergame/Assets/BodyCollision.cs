@@ -43,7 +43,8 @@ public class BodyCollision : MonoBehaviour {
         }
         else if (collision.gameObject.tag == "Character")
         {
-            GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().GameWon = true;
+			//GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().GameWon = true;
+			GameObject.FindObjectOfType<LevelHandling>().nextLevel();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 public class ArrowPlacer : MonoBehaviour {
 
@@ -13,6 +14,7 @@ public class ArrowPlacer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+       
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -23,8 +25,9 @@ public class ArrowPlacer : MonoBehaviour {
             {
                 if (hit && hit.transform.gameObject.tag.Contains("Arrow"))
                 {
-                    ArrowGen.GetComponent<ArrowGenerator>().Arrows.Remove(hit.transform);
-                    Destroy(hit.transform.gameObject);
+                    //ArrowGen.GetComponent<ArrowGenerator>().Arrows.Remove(hit.transform);
+                    ArrowGen.GetComponent<ArrowGenerator>().RemoveFromArrows(hit.transform);
+                   // Destroy(hit.transform.gameObject);
                 }
 
 
@@ -58,8 +61,8 @@ public class ArrowPlacer : MonoBehaviour {
                         break;
 
                 }
-
-                ArrowGen.GetComponent<ArrowGenerator>().Arrows.Add(spawned.transform);
+                KeyValuePair<Transform, int> ArrowStr = new KeyValuePair<Transform, int> (spawned.transform, 0);
+                ArrowGen.GetComponent<ArrowGenerator>().Arrows.Add(ArrowStr);
 
             }
         }

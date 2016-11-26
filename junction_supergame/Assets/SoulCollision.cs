@@ -2,13 +2,19 @@
 using System.Collections;
 
 public class SoulCollision : MonoBehaviour {
-    public Vector2 xBound = new Vector2(-5, 10);
-    public Vector2 yBound = new Vector2(-1, 20);
+    private Vector2 xBound = new Vector2(-5, 10);
+    private Vector2 yBound = new Vector2(-1, 20);
+    public float tolerance = 3;
 
     // Use this for initialization
     void Start () {
-	
-	}
+        //20 15
+        GameObject lvlH = GameObject.FindGameObjectWithTag("LevelHandler");
+        float xWall = lvlH.GetComponent<GenerateBoundaryWall>().xBoundary;
+        float yWall = lvlH.GetComponent<GenerateBoundaryWall>().xBoundary; 
+        xBound = new Vector2(-tolerance, tolerance + xWall/2.0f);
+        yBound = new Vector2(-tolerance, tolerance + yWall/2.0f);
+    }
 	
 	// Update is called once per frame
 	void Update () {

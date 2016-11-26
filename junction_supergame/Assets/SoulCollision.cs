@@ -14,6 +14,7 @@ public class SoulCollision : MonoBehaviour {
         float yWall = lvlH.GetComponent<GenerateBoundaryWall>().xBoundary; 
         xBound = new Vector2(-tolerance, tolerance + xWall/2.0f);
         yBound = new Vector2(-tolerance, tolerance + yWall/2.0f);
+        GetComponent<Animator>().SetInteger( "Wall", 0 );
     }
 	
 	// Update is called once per frame

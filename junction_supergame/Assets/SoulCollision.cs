@@ -2,15 +2,23 @@
 using System.Collections;
 
 public class SoulCollision : MonoBehaviour {
+    public Vector2 xBound = new Vector2(-5, 10);
+    public Vector2 yBound = new Vector2(-1, 20);
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	    
+	    if (transform.position.x < xBound.x || 
+            transform.position.x > xBound.y ||
+            transform.position.y < yBound.x ||
+            transform.position.y > yBound.y)
+        {
+            GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().GameOver = true;
+        }
 	}
 
     private void OnTriggerEnter2D( Collider2D collision )

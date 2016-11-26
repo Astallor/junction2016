@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class DestroyLevel : MonoBehaviour {
 
@@ -26,7 +27,7 @@ public class DestroyLevel : MonoBehaviour {
 	private void destroyObjectsWithTag( string tag )
 	{
 		foreach( GameObject obj in GameObject.FindGameObjectsWithTag( tag ) )
-			Destroy( obj );
+			DestroyImmediate( obj );
 	}
 
 

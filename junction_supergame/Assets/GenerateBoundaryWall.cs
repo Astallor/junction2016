@@ -77,7 +77,7 @@ public class GenerateBoundaryWall : MonoBehaviour {
 				foreach( GameObject ob in GameObject.FindGameObjectsWithTag( "Wall" ) )
 				{
 					if( Vector3.Distance( new Vector3( (((float) x) / 2f), (((float) y) / 2f), 0 ), ob.transform.position ) == 0 )
-					{						
+					{
 						flag = true;
 					}
 				}

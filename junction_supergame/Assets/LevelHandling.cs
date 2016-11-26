@@ -17,7 +17,7 @@ public class LevelHandling : MonoBehaviour {
 
 	public void resetLevel()
 	{
-		GetComponent<DestroyLevel>().destroyLevel();
+		GetComponent<DestroyLevel>().destroyLevel();		
 		if(!GetComponent<GenerateFirstLevel>().recreateCurrentLevel())
 			GetComponent<GenerateFirstLevel>().createNextLevel();
 	}

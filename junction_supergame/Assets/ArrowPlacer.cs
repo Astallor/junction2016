@@ -18,9 +18,14 @@ public class ArrowPlacer : MonoBehaviour {
             Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(pos, new Vector3(0, 0, 1), 10);
 
+            
             if (!hit || hit.transform.gameObject.tag.Contains("Arrow"))
             {
-
+                if (hit && hit.transform.gameObject.tag.Contains("Arrow"))
+                {
+                    ArrowGen.GetComponent<ArrowGenerator>().Arrows.Remove(hit.transform);
+                    Destroy(hit.transform.gameObject);
+                }
 
 
                 pos.x = (float)Math.Round(2.0 * pos.x) / 2.0f;

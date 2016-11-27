@@ -4,15 +4,15 @@ using System.Collections;
 public class Movement : MonoBehaviour {
 
     public Vector3 m_direction;
-    public float m_velocity = 0.05f;
-    public static float defaultVelocity = 0.05f;
+    public float m_velocity;
+    public static float defaultVelocity = 15f;
     public const float Speed = 1.0f;
     private bool m_arrowInteract;
     private Animator m_anim;
 
     // Use this for initialization
     void Start () {
-        m_velocity = 0.05f;
+        m_velocity = defaultVelocity;
         m_direction = new Vector3( 1.0f, 0.0f );
         m_arrowInteract = true;
         m_anim = GetComponent<Animator>();
@@ -21,8 +21,7 @@ public class Movement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         userInput();
-        //transform.Translate( m_direction * m_velocity );
-        GetComponent<Rigidbody2D>().velocity = m_direction * m_velocity * 30;
+        GetComponent<Rigidbody2D>().velocity = m_direction * m_velocity * 20;
 	}
 
 	void userInput()

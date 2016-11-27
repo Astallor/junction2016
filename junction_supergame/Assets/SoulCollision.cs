@@ -5,6 +5,7 @@ public class SoulCollision : MonoBehaviour {
     private Vector2 xBound = new Vector2(-5, 10);
     private Vector2 yBound = new Vector2(-1, 20);
     public float tolerance = 3;
+    public AudioClip m_audio;
 
     // Use this for initialization
     void Start () {
@@ -32,8 +33,9 @@ public class SoulCollision : MonoBehaviour {
     {
         if( collision.gameObject.tag == "Wall" )
         {
+            GetComponent<AudioSource>().PlayOneShot( m_audio );
             //GetComponent<Movement>().m_vector.Scale( new Vector3( 0.25f, 0.25f ) );
-            GetComponent<Movement>().m_velocity = Movement.defaultVelocity/4;
+            GetComponent<Movement>().m_velocity = Movement.defaultVelocity/3;
             GetComponent<Animator>().SetInteger( "Wall", 1 );
         }
         Debug.Log( "Collision Soul" );

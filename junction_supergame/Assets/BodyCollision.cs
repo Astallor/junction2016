@@ -5,9 +5,10 @@ using System;
 public class BodyCollision : MonoBehaviour {
 
     private Animator m_anim;
+    public AudioClip m_audioDeath;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         m_anim = GetComponent<Animator>();
 	}
 	
@@ -45,14 +46,15 @@ public class BodyCollision : MonoBehaviour {
         }
         else if (collision.gameObject.tag == "Grave")
         {
+            GetComponent<AudioSource>().PlayOneShot( m_audioDeath );
             Debug.Log("You DIEDEDEDEDEDEDED!!!");
             transform.position = collision.transform.position;
             GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().GameOver = true;
 
         }
         else if (collision.gameObject.tag == "Character")
-        {			
-			if( !GameObject.FindObjectOfType<LevelHandling>().nextLevel() )
+        {
+            if( !GameObject.FindObjectOfType<LevelHandling>().nextLevel() )
 			{
 				GameObject.FindGameObjectWithTag( "GameManager" ).GetComponent<GameManager>().GameWon = true;
 			}

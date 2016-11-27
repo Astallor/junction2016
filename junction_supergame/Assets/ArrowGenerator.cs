@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
+
+using System.Collections.Generic;
 
 public class ArrowGenerator : MonoBehaviour {
     public int ArrowNo;
-    public int ArrowLimit = 3;
+    public int ArrowLimit = 2;
     public Transform Displayed;
     private int ArrowCount;
     public ArrayList Arrows = new ArrayList();
@@ -24,14 +27,25 @@ public class ArrowGenerator : MonoBehaviour {
 	
 	public void NewArrow()
     {
-        ArrowNo = Random.Range(0, 4);
+        ArrowNo = UnityEngine.Random.Range(0, 4);
         ArrowCount++;
+        
 
-        if (Arrows.Count >= ArrowLimit)
+        for (int i = 0; i < Arrows.Count; i++)
         {
-            Destroy(((Transform)Arrows[0]).gameObject);
-            Arrows.Remove(Arrows[0]);
+            KeyValuePair<Transform, int> Arr = (KeyValuePair < Transform, int> )(Arrows[i]);
+            Arrows[i] = new KeyValuePair<Transform, int>(Arr.Key, Arr.Value+1);
+
+         
+
+            if (Arr.Value >= ArrowLimit)
+            {
+                Destroy(Arr.Key.gameObject);
+                Arrows.Remove(Arrows[0]);
+                i--;
+            }
         }
+       
 
         Destroy(Displayed.gameObject);
         GameObject spawned = new GameObject();
@@ -63,12 +77,29 @@ public class ArrowGenerator : MonoBehaviour {
         Displayed = spawned.transform;
     }
 
-	public void destroyArrows()
+    public void RemoveFromArrows(Transform atransform)
+    {
+        
+        foreach(var ArrStr in Arrows)
+        {
+            KeyValuePair<Transform, int> Arr = (KeyValuePair<Transform, int>)ArrStr;
+            if (Arr.Key == atransform)
+            {
+                Destroy(Arr.Key.gameObject);
+                Arrows.Remove(Arr);
+                return;
+            }
+        }
+    }
+
+    public void destroyArrows()
 	{
 		for( int i = Arrows.Count - 1; i >= 0; i-- )
 		{
-			Destroy( ((Transform) Arrows[i]).gameObject );
-			Arrows.Remove( Arrows[i] );
-		}	
+            KeyValuePair<Transform, int> Arr = (KeyValuePair<Transform, int>)(Arrows[i]);
+            Destroy(Arr.Key.gameObject);
+            Arrows.Remove( Arrows[i] );
+		}
+        ArrowCount = 0;
 	}
 }

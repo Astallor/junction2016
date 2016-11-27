@@ -36,7 +36,57 @@ public class ArrowGenerator : MonoBehaviour {
             KeyValuePair<Transform, int> Arr = (KeyValuePair < Transform, int> )(Arrows[i]);
             Arrows[i] = new KeyValuePair<Transform, int>(Arr.Key, Arr.Value+1);
 
-         
+            if (Arr.Value == 0)
+            {
+                
+                //arrow 1 png
+                SpriteRenderer SR = Arr.Key.GetComponent<SpriteRenderer>();
+                switch(SR.sprite.name)
+                {
+                    case "ArrowUp":
+                        SR.sprite = Resources.Load<Sprite>("Sprites/ArrowUp1");
+                        
+                        break;
+                    case "ArrowDown":
+                        SR.sprite = Resources.Load<Sprite>("Sprites/ArrowDown1");
+                        
+                        break;
+                    case "ArrowLeft":
+                        SR.sprite = Resources.Load<Sprite>("Sprites/ArrowLeft1");
+                        
+                        break;
+                    case "ArrowRight":
+                        SR.sprite = Resources.Load<Sprite>("Sprites/ArrowRight1");
+                        
+                        break;
+                }
+            }
+
+            else
+            {
+                
+                SpriteRenderer SR = Arr.Key.GetComponent<SpriteRenderer>();
+                Debug.Log(SR.sprite);
+                switch (SR.sprite.name)
+                {
+                    case "ArrowUp1":
+                        SR.sprite = Resources.Load<Sprite>("Sprites/ArrowUp2");
+                        Debug.Log("call up");
+                        break;
+                    case "ArrowDown1":
+                        SR.sprite = Resources.Load<Sprite>("Sprites/ArrowDown2");
+                        Debug.Log("call down");
+                        break;
+                    case "ArrowLeft1":
+                        SR.sprite = Resources.Load<Sprite>("Sprites/ArrowLeft2");
+                        Debug.Log("call l");
+                        break;
+                    case "ArrowRight1":
+                        SR.sprite = Resources.Load<Sprite>("Sprites/ArrowRight2");
+                        Debug.Log("call r");
+                        break;
+                }
+            }
 
             if (Arr.Value >= ArrowLimit)
             {

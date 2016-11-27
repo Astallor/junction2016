@@ -14,7 +14,7 @@ public class ArrowPlacer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-       
+        
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);

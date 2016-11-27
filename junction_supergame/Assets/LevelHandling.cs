@@ -3,6 +3,8 @@ using System.Collections;
 
 public class LevelHandling : MonoBehaviour {
 
+    public AudioClip m_audioGong;
+
 	// Use this for initialization
 	void Start () {
 		GetComponent<GenerateFirstLevel>().initialize();
@@ -12,7 +14,8 @@ public class LevelHandling : MonoBehaviour {
 	public bool nextLevel()
 	{
 		GetComponent<DestroyLevel>().destroyLevel();
-		return GetComponent<GenerateFirstLevel>().createNextLevel();
+        GetComponent<AudioSource>().PlayOneShot( m_audioGong );
+        return GetComponent<GenerateFirstLevel>().createNextLevel();
 	}
 
 	public void resetLevel()

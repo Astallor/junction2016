@@ -33,7 +33,7 @@ public class SoulCollision : MonoBehaviour {
         if( collision.gameObject.tag == "Wall" )
         {
             //GetComponent<Movement>().m_vector.Scale( new Vector3( 0.25f, 0.25f ) );
-            GetComponent<Movement>().m_velocity = Movement.defaultVelocity/4;
+            GetComponent<Movement>().m_velocity = Movement.defaultVelocity/3;
             GetComponent<Animator>().SetInteger( "Wall", 1 );
         }
         Debug.Log( "Collision Soul" );

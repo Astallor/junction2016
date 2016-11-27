@@ -20,6 +20,7 @@ public class GenerateFirstLevel : MonoBehaviour {
 	{
 		nextLevel = 0;
 		listOfLevels = new List<Action>();
+		listOfLevels.Add( () => this.createTutorial() );
 		listOfLevels.Add( () => this.createFirst() );
 		listOfLevels.Add( () => this.createSecond() );
 		listOfLevels.Add( () => this.createThird() );
@@ -54,6 +55,21 @@ public class GenerateFirstLevel : MonoBehaviour {
 	private void init()
 	{
 		boundaryGenerator = GetComponent<GenerateBoundaryWall>();
+	}
+
+	private void createTutorial()
+	{
+		init();
+		boundaryGenerator.xBoundary = 15;
+		boundaryGenerator.yBoundary = 15;
+
+		boundaryGenerator.generate();
+
+		boundaryGenerator.generateWall( 4, 4, 4, 10 );
+		boundaryGenerator.generateWall( 10, 10, 4, 10 );
+
+		boundaryGenerator.generateSoul( 1, 13 );
+		boundaryGenerator.generateBody( 13, 1 );
 	}
 
 	private void createFirst()
@@ -221,7 +237,7 @@ public class GenerateFirstLevel : MonoBehaviour {
 		{
 			boundaryGenerator.generateTombstone( i * 5, 3 );
 		}
-		boundaryGenerator.generateBody( 19, 13 );
+		boundaryGenerator.generateBody( 18, 13 );
 		boundaryGenerator.generateSoul( 1, 1 );
 	}
 
@@ -250,7 +266,7 @@ public class GenerateFirstLevel : MonoBehaviour {
 		boundaryGenerator.generateWall( 8, 8, 8, 12 );
 		boundaryGenerator.generateWall( 9, 10, 8, 8 );
 
-		boundaryGenerator.generateSoul( -1, 3 );
+		boundaryGenerator.generateSoul( -1, 4 );
 		boundaryGenerator.generateBody( 9, 9 );
 	}
 
